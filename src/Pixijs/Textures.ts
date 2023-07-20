@@ -1,7 +1,7 @@
 import { Texture } from "pixi.js"
-import UnitPNG from "../Chel.png"
-import Rectangle from "../Rectangle.png"
-import Wall from "../Wall.png"
+import UnitPNG from "../unit.png"
+import Rectangle from "../rectangle.png"
+import Wall from "../wall.png"
 
 
 export const unit = Texture.from(UnitPNG)
