@@ -27,7 +27,7 @@ export class GamePixi {
     }
 
     rightDown(event: MouseEvent) {
-        if (event.button === 1) {
+        if (event.button === 2) {
             this.isMouseButtonDown = true
             this.startPosition.x = this.gameMap.x - event.pageX
             this.startPosition.y = this.gameMap.y - event.pageY
@@ -35,17 +35,17 @@ export class GamePixi {
     }
 
     private rightUp(event: MouseEvent) {
-        if (event.button === 1) {
+        if (event.button === 2) {
             this.isMouseButtonDown = false
         }
     }
 
     private getPosition(event: MouseEvent) {
         const pos = { x: 0, y: 0 };
-        if (this.gameMap) {
-            pos.x = event.pageX + this.startPosition.x
-            pos.y = event.pageY + this.startPosition.y
-        }
+
+        pos.x = event.pageX + this.startPosition.x
+        pos.y = event.pageY + this.startPosition.y
+
         return pos;
     }
 
@@ -69,7 +69,7 @@ export class GamePixi {
         }
     }
 
-    private movePlayer(event: FederatedMouseEvent) {    
+    private movePlayer(event: FederatedMouseEvent) {
     }
 
 
