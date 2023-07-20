@@ -9,7 +9,7 @@ export class GamePixi {
     cells: Cell[][]
     units: Unit[]
     gameMap = new Container()
-    isMouseButtonDown = false;
+    isMouseButtonDown = false
     startPosition = { x: 0, y: 0 }
 
 
@@ -17,7 +17,7 @@ export class GamePixi {
         this.app = new Application<HTMLCanvasElement>({ background: '#1099bb', resizeTo: window })
         this.units = []
         this.cells = []
-        this.gameMap.eventMode = "dynamic";
+        this.gameMap.eventMode = "dynamic"
         this.gameMap.sortableChildren = true
         this.app.view.addEventListener("mousedown", (e) => this.rightDown(e))
         this.app.view.addEventListener("mouseup", (e) => this.rightUp(e))
@@ -41,12 +41,10 @@ export class GamePixi {
     }
 
     private getPosition(event: MouseEvent) {
-        const pos = { x: 0, y: 0 };
-
+        const pos = { x: 0, y: 0 }
         pos.x = event.pageX + this.startPosition.x
         pos.y = event.pageY + this.startPosition.y
-
-        return pos;
+        return pos
     }
 
     private moveMap(event: MouseEvent) {
@@ -64,12 +62,13 @@ export class GamePixi {
         for (let x = 0; x < moves.length; x++) {
             for (let y = 0; y < moves[x].length; y++) {
                 if (moves[x][y] > 0 || moves[x][y] === -2)
-                    this.cells[x][y].cursor = "pointer"
+                    this.cells[x][y].setClickable()
             }
         }
     }
 
     private movePlayer(event: FederatedMouseEvent) {
+        
     }
 
 
@@ -79,7 +78,7 @@ export class GamePixi {
         for (let x = 0; x < field.length; x++) {
             this.cells.push([])
             for (let y = 0; y < field[x].length; y++) {
-                const cell = new Cell(field[x][y].isPassable, x, y, (e) => this.movePlayer(e))
+                const cell = new Cell(field[x][y].isPassable, (e) => this.movePlayer(e), x, y)
                 cell.zIndex = 0
                 this.cells[x].push(cell)
                 this.gameMap.addChild(cell)
